@@ -1,0 +1,9 @@
+.selected {
+  background-color: #2B2B2B !important;
+  color: #FFF !important;
+}
+
+.selectedColor {
+  outline: 3px solid #5ECE7B !important;
+  border: 1px solid #FFF;
+}
