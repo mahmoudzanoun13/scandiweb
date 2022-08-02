@@ -54,7 +54,7 @@ export class Products extends Component {
                     <Image src={product.gallery[0]} alt="product_photo" />
                   </Wrapper>
                   <Content>
-                    <ContentTitle>{product.name}</ContentTitle>
+                    <ContentTitle>{product.brand} {product.name}</ContentTitle>
                     {
                       product.prices.map((price) => {
                         let symbol = price.currency.symbol;

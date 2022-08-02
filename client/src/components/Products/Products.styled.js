@@ -90,6 +90,7 @@ export const ContentTitle = styled.p`
   font-weight: 300;
   line-height: 29px;
   color: #1D1F22;
+  margin-top: 20px;
 `;
 
 export const ContentPrice = styled.p`
