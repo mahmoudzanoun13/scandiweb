@@ -113,7 +113,7 @@ export class Cart extends Component {
                 <Right>
                   <ControlsWrapper>
                     <Controls>
-                      <Button onClick={() => incrementQuantity(product.id)}>
+                      <Button onClick={() => incrementQuantity(product.id, product.selectedAttributes)}>
                         +
                       </Button>
                       <Items>{product.quantity}</Items>

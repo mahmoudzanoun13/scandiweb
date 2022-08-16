@@ -70,7 +70,7 @@ export class Cart extends Component {
             ))}
           </Left>
           <Center>
-            <Button onClick={() => incrementQuantity(id)}>+</Button>
+            <Button onClick={() => incrementQuantity(id, selectedAttributes)}>+</Button>
             <Items>{quantity}</Items>
             <Button onClick={() => decrementQuantity(id)}>-</Button>
           </Center>

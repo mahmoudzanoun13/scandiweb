@@ -36,18 +36,27 @@ export class App extends Component {
   }
 
   handleAddToCart = (product, selectedAttributes, lengthOfAttributes) => {
-    let isPresent = this.state.cartItems.findIndex(item => item.id === product.id) !== -1;
     let initialAttributes = {};
     const attributes = product.attributes.map((attribute) => attribute.items);
     const getAttributesId = product.attributes.map((attribute) => attribute.id);
     attributes.map((item, i) => initialAttributes[getAttributesId[i]] = item[0].value);
+    let isPresent = this.state.cartItems.findIndex(item => 
+      item.id === product.id && JSON.stringify(item.selectedAttributes) === JSON.stringify(selectedAttributes)) !== -1;
     if (isPresent) {
-      this.incrementQuantity(product.id);
+      this.incrementQuantity(product.id, selectedAttributes);
+      alert('Added successfully');
     } else {
       if (!selectedAttributes) {
-        this.setState((prevState) => ({
-          cartItems: prevState.cartItems.concat({ ...product, quantity: 1, selectedAttributes: initialAttributes }),
-        }))
+        let isPresent = this.state.cartItems.findIndex(item => 
+          item.id === product.id && JSON.stringify(item.selectedAttributes) === JSON.stringify(initialAttributes)) !== -1;
+        if (isPresent) {
+          this.incrementQuantity(product.id, initialAttributes);
+          alert('Added successfully');
+        } else {
+          this.setState((prevState) => ({
+            cartItems: prevState.cartItems.concat({ ...product, quantity: 1, selectedAttributes: initialAttributes }),
+          }))
+        }
         alert('Added successfully');
       } else {
         if (product.inStock) {
@@ -67,10 +76,10 @@ export class App extends Component {
     }
   }
 
-  incrementQuantity = (id) => {
+  incrementQuantity = (id, selectedAttributes) => {
     this.setState((prevState) => {
       let updatedCartItems = prevState.cartItems.map((product) => {
-        if (product.id === id) {
+        if (product.id === id && JSON.stringify(product.selectedAttributes) === JSON.stringify(selectedAttributes)) {
           return {
             ...product,
             quantity: product.quantity + 1,
@@ -94,7 +103,7 @@ export class App extends Component {
           }
         }
         return product;
-      })
+      }).filter((product) => product?.quantity > 0);
       return {
         cartItems: updatedCartItems,
       };
