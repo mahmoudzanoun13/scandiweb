@@ -36,12 +36,18 @@ export class Carousel extends Component {
             )
           ))}
         </Images>
-        <SlideLeft onClick={this.prevSlide}>
-          <Arrow src={arrowLeft} alt="slide_left" />
-        </SlideLeft>
-        <SlideRight onClick={this.nextSlide}>
-          <Arrow src={arrowRight} alt="slide_right" />
-        </SlideRight>
+        {
+          images.length > 1 ?
+            <>
+              <SlideLeft onClick={this.prevSlide}>
+                <Arrow src={arrowLeft} alt="slide_left" />
+              </SlideLeft>
+              <SlideRight onClick={this.nextSlide}>
+                <Arrow src={arrowRight} alt="slide_right" />
+              </SlideRight>
+            </>
+          : null
+        }
       </Container>
     );
   }
