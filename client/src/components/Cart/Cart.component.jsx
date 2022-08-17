@@ -7,7 +7,6 @@ import {
   Colors,
   Container,
   Content,
-  DeleteItem,
   Image,
   Items,
   Left,
@@ -24,7 +23,6 @@ export class Cart extends Component {
       attributes,
       brand,
       decrementQuantity,
-      deleteItem,
       id,
       incrementQuantity,
       name,
@@ -80,7 +78,6 @@ export class Cart extends Component {
             </Wrapper>
           </Right>
         </Content>
-        <DeleteItem onClick={() => deleteItem(id)}>x</DeleteItem>
       </Container>
     );
   }

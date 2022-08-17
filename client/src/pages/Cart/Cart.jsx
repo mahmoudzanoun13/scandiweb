@@ -10,7 +10,6 @@ import {
   Container,
   Controls,
   ControlsWrapper,
-  DeleteItem,
   Headline,
   HorizontalLine,
   Items,
@@ -64,7 +63,6 @@ export class Cart extends Component {
       totalPrice,
       incrementQuantity,
       decrementQuantity,
-      deleteItem,
       completedProcess,
     } = this.props;
     const { totalTax } = this.state;
@@ -125,7 +123,6 @@ export class Cart extends Component {
                   <Carousel images={product.gallery} />
                 </Right>
               </Product>
-              <DeleteItem onClick={() => deleteItem(product.id)}>x</DeleteItem>
               <HorizontalLine />
             </Container>
           ))}

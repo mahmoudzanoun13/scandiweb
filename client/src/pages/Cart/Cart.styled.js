@@ -166,20 +166,6 @@ export const Total = styled.p`
   margin-top: 17px;
 `;
 
-export const DeleteItem = styled.span`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  color: #1D1F22;
-  font-weight: 600;
-  transition: .4s ease-in-out;
-  transform: scale(1);
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
-
 export const Order = styled.button`
   display: flex;
   justify-content: center;

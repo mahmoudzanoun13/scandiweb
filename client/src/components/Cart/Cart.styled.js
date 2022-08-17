@@ -112,17 +112,3 @@ export const Image = styled.img`
   height: 100%;
   object-fit: contain;
 `;
-
-export const DeleteItem = styled.span`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  color: #1D1F22;
-  font-weight: 600;
-  transition: .4s ease-in-out;
-  transform: scale(1);
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;

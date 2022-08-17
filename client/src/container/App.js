@@ -110,17 +110,6 @@ export class App extends Component {
     })
   }
 
-  deleteItem = (id) => {
-    this.setState((prevState) => {
-      let updatedCartItems = prevState.cartItems.filter((product) => {
-        return product.id !== id;
-      })
-      return {
-        cartItems: updatedCartItems,
-      };
-    })
-  }
-
   getTotalQuantity = () => {
     let totalQuantity = 0;
     this.setState({totalQuantity: totalQuantity});
@@ -169,7 +158,6 @@ export class App extends Component {
           cartItems={cartItems}
           incrementQuantity={this.incrementQuantity}
           decrementQuantity={this.decrementQuantity}
-          deleteItem={this.deleteItem}
           getTotalQuantity={this.getTotalQuantity}
           totalQuantity={totalQuantity}
           currency={currency}
@@ -210,7 +198,6 @@ export class App extends Component {
                 totalPrice={totalPrice}
                 incrementQuantity={this.incrementQuantity}
                 decrementQuantity={this.decrementQuantity}
-                deleteItem={this.deleteItem}
                 getTotalQuantity={this.getTotalQuantity}
                 getTotalPrice={this.getTotalPrice}
                 completedProcess={this.completedProcess}

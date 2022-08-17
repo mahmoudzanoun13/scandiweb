@@ -61,7 +61,6 @@ export class NavBar extends Component {
       choseCategory,
       chosenCategory,
       decrementQuantity,
-      deleteItem,
       incrementQuantity,
       totalQuantity,
       currency,
@@ -125,7 +124,6 @@ export class NavBar extends Component {
                     cartItems={cartItems}
                     incrementQuantity={incrementQuantity}
                     decrementQuantity={decrementQuantity}
-                    deleteItem={deleteItem}
                     totalQuantity={totalQuantity}
                     currency={currency}
                     totalPrice={totalPrice}

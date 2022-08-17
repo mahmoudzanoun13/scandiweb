@@ -18,7 +18,6 @@ export class CartOverlay extends Component {
     const {
       cartItems,
       decrementQuantity,
-      deleteItem,
       incrementQuantity,
       totalQuantity,
       currency,
@@ -41,7 +40,6 @@ export class CartOverlay extends Component {
               {...item}
               incrementQuantity={incrementQuantity}
               decrementQuantity={decrementQuantity}
-              deleteItem={deleteItem}
               currency={currency}
             />
           ))}
