@@ -86,7 +86,7 @@ export const CardCounter = styled.div`
   position: absolute;
   top: -10px;
   right: -14px;
-  cursor: pointer;
+  cursor: default;
   display: flex;
   justify-content: center;
   align-items: center;
