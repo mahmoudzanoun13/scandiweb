@@ -20,6 +20,9 @@ export class App extends Component {
     if(localStorage.carts) {
       this.setState({cartItems: JSON.parse(localStorage.carts)});
     }
+    if(localStorage.category) {
+      this.setState({chosenCategory: JSON.parse(localStorage.category)});
+    }
     window.addEventListener('beforeunload', this.handleUpdatedLocalStorage);
   }
 
@@ -29,6 +32,7 @@ export class App extends Component {
 
   handleUpdatedLocalStorage = () => {
     localStorage.setItem('carts', JSON.stringify(this.state.cartItems));
+    localStorage.setItem('category', JSON.stringify(this.state.chosenCategory));
   }
     
   choseCategory = (name) => {
