@@ -1,19 +1,19 @@
 import { Component } from "react";
-import { Option, Section, Select } from "./CurrencySwitcher.styled";
+import './CurrencySwitcher.css';
 
 export class CurrencySwitcher extends Component {
   render() {
     const { currencies, choseCurrency } = this.props;
     return (
-      <Section>
-        <Select>
+      <section className="section-cs">
+        <div className="select-cs">
           {
             currencies.map((currency) => (
-              <Option onClick={() => choseCurrency(currency.symbol)} key={currency.label}>{currency.symbol} {currency.label}</Option>
+              <p className="option-cs" onClick={() => choseCurrency(currency.symbol)} key={currency.label}>{currency.symbol} {currency.label}</p>
             ))
           }
-        </Select>
-      </Section>
+        </div>
+      </section>
     );
   }
 }

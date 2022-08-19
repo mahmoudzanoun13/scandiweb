@@ -1,25 +1,9 @@
 import { Component } from "react";
-import { 
-  ActiveImage, 
-  Category, 
-  Container, 
-  Content, 
-  GroupImages, 
-  Image, 
-  ImageWrapper, 
-  SectionTitle, 
-  Title, 
-  Wrapper, 
-  Colors, 
-  Color, 
-  Price, 
-  AddToCart,  
-  Capacity
-} from "./ProductDetails.styled";
 import withParams from "../../withParams/withParams";
 import { detailsProductQuery } from "../../GraphQL/queries";
 import { client } from "../../index";
 import parse from "html-react-parser";
+import styled from "styled-components";
 import './ProductDetails.css';
 
 export class ProductDetails extends Component {
@@ -63,32 +47,32 @@ export class ProductDetails extends Component {
     } = productDetails;
     const { handleAddToCart, currency } = this.props;
     return (
-      <Container>
-        <Wrapper>
-          <GroupImages>
+      <>
+        <div className="wrapper-pd">
+          <div className="group-images">
             {gallery?.map((item, i) => (
-              <ImageWrapper key={i}>
-                <Image
+              <div className="image-wrapper" key={i}>
+                <img className="image-pd"
                   onClick={() => this.setIndex(i)}
                   src={item}
                   alt="product_image"
                 />
-              </ImageWrapper>
+              </div>
             ))}
-          </GroupImages>
-          <ActiveImage>
-            <Image src={banner[index]} alt="product_image" specifyHeight />
-          </ActiveImage>
-          <Content>
-            <Title>{brand}</Title>
-            <Category>{name}</Category>
+          </div>
+          <div className="active-image-wrapper">
+            <img className="image-pd-active" src={banner[index]} alt="product_image" />
+          </div>
+          <div className="content-pd">
+            <h1 className="title-pd">{brand}</h1>
+            <p className="category-pd">{name}</p>
             {attributes?.map((attribute) => (
-              <Container key={attribute.id}>
-                <SectionTitle>{attribute.name}:</SectionTitle>
+              <div key={attribute.id}>
+                <p className="section-title-pd">{attribute.name}:</p>
                 {attribute.items?.map((item, i) => (
-                  <Container key={i} style={{ display: "inline-block" }}>
+                  <div key={i} style={{ display: "inline-block" }}>
                     {attribute.id === "Color" ? (
-                      <Colors>
+                      <div className="colors-pd">
                         <Color
                           onClick={() =>
                             this.getAttributes(attribute.id, item.value)
@@ -96,31 +80,32 @@ export class ProductDetails extends Component {
                           className={`${selectedAttributes[attribute.id] === item.value ? 'selectedColor' : null}`}
                           value={item.value}
                         />
-                      </Colors>
+                      </div>
                     ) : (
-                      <Capacity
+                      <div
                         onClick={() =>
                           this.getAttributes(attribute.id, item.value)
                         }
-                        className={`${selectedAttributes[attribute.id] === item.value ? 'selected' : null}`}
+                        className={`capacity-pd ${selectedAttributes[attribute.id] === item.value ? 'selected' : null}`}
                       >
                         {item.value}
-                      </Capacity>
+                      </div>
                     )}
-                  </Container>
+                  </div>
                 ))}
-              </Container>
+              </div>
             ))}
-            <SectionTitle>PRICE:</SectionTitle>
+            <p className="section-title-pd">PRICE:</p>
             {productDetails.prices?.map((price) => {
               let symbol = price.currency.symbol;
               return symbol === currency ? (
-                <Price key={symbol}>
+                <p className="price-pd" key={symbol}>
                   {currency} {price.amount}
-                </Price>
+                </p>
               ) : null;
             })}
-            <AddToCart
+            <div
+              className="add-to-cart-pd"
               onClick={() =>
                 handleAddToCart(productDetails, selectedAttributes, attributes?.length)
               }
@@ -128,13 +113,27 @@ export class ProductDetails extends Component {
               {
                 inStock ? 'ADD TO CART' : 'OUT OF STOCK'
               }
-            </AddToCart>
+            </div>
             {parse(`${description}`)}
-          </Content>
-        </Wrapper>
-      </Container>
+          </div>
+        </div>
+      </>
     );
   }
 }
+
+const Color = styled.div`
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  background: ${props => props.value ? props.value : null};
+  transition: .4s ease-in-out;
+  transform: scale(1);
+  outline: 1px solid #1D1F22;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+`;
 
 export default withParams(ProductDetails);

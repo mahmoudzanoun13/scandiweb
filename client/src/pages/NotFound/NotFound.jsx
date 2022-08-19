@@ -1,13 +1,13 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, CodeStatus, Status, Span, Text } from './NotFound.styles.js';
+import './NotFound.css';
 
 export class NotFound extends Component {
   render() {
     return (
-      <Container>
-        <CodeStatus>404</CodeStatus>
-        <Status>Page Not Found</Status>
+      <main className="container-nf">
+        <h1 className="code-status">404</h1>
+        <div className="status">Page Not Found</div>
           <Link
             to="/"
             style={{
@@ -23,10 +23,10 @@ export class NotFound extends Component {
               marginTop: '1.25rem',
             }}
           >
-            <Span />
-            <Text>Go Home</Text>
+            <span className="span" />
+            <span className="text">Go Home</span>
           </Link>
-      </Container>
+      </main>
     );
   }
 }

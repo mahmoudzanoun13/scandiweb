@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Arrow, Container, Image, Images, SlideLeft, SlideRight } from './Carousel.styled';
 import arrowLeft from '../../assets/images/arrow_left.png';
 import arrowRight from '../../assets/images/arrow_right.png';
+import './Carousel.css';
 
 export class Carousel extends Component {
   state = {
@@ -28,27 +28,27 @@ export class Carousel extends Component {
     const { images } = this.props;
     const { currentSlide } = this.state;
     return (
-      <Container>
-        <Images>
+      <div className="container-c">
+        <div className="images-c">
           {images.map((image, i) => (
             i === currentSlide && (
-              <Image key={i} src={image} alt="product_image" />
+              <img className="image-c" key={i} src={image} alt="product_image" />
             )
           ))}
-        </Images>
+        </div>
         {
           images.length > 1 ?
             <>
-              <SlideLeft onClick={this.prevSlide}>
-                <Arrow src={arrowLeft} alt="slide_left" />
-              </SlideLeft>
-              <SlideRight onClick={this.nextSlide}>
-                <Arrow src={arrowRight} alt="slide_right" />
-              </SlideRight>
+              <div className="slide-left" onClick={this.prevSlide}>
+                <img src={arrowLeft} alt="slide_left" />
+              </div>
+              <div className="slide-right" onClick={this.nextSlide}>
+                <img src={arrowRight} alt="slide_right" />
+              </div>
             </>
           : null
         }
-      </Container>
+      </div>
     );
   }
 }

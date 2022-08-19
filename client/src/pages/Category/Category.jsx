@@ -1,21 +1,21 @@
 import { Component } from 'react';
 import { Products } from '../../components/Products/Products.component';
-import { Container, Title, Wrapper } from './Category.styled';
+import './Category.css';
 
 export class Category extends Component {
   render() {
     const { chosenCategory, handleAddToCart, currency } = this.props;
     return (
-      <Container>
-        <Title>{chosenCategory}</Title>
-        <Wrapper>
+      <>
+        <h1 className="category-title">{chosenCategory}</h1>
+        <div>
           <Products
             chosenCategory={chosenCategory}
             handleAddToCart={handleAddToCart}
             currency={currency}
           />
-        </Wrapper>
-      </Container>
+        </div>
+      </>
     );
   }
 }

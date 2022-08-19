@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const Container = styled.div`
+.container-co {
   padding: 0px 16px 32px;
   position: absolute;
   width: 325px;
@@ -10,69 +8,69 @@ export const Container = styled.div`
   background: #FFF;
   z-index: 1000;
   overflow-y: auto;
-`;
+}
 
-export const Wrapper = styled.div`
+.wrapper-co {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
-`;
+}
 
-export const ItemQuantity = styled.h2`
+.item-quantity-co {
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 160%;  
   color: #1D1F22;
-`;
+}
 
-export const EmptyCart = styled.div`
+.bold-co {
+    font-weight: 800;
+}
+
+.empty-cart-co {
   width: 100%;
   height: 210px;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+}
 
-export const Bold = styled.strong`
-  font-weight: 800;
-`;
-
-export const TotalPrice = styled.div`
+.total-price-co {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+}
 
-export const Total = styled.p`
+.total-co {
   color: #1D1F22;
   font-weight: 500;
   font-size: 16px;
   line-height: 18px;
-`;
+}
 
-export const Price = styled.p`
+.price-co {
   color: #1D1F22;
   font-weight: 500;
   font-size: 16px;
   line-height: 160%;
-`;
+}
 
-export const Buttons = styled.div`
+.buttons-co {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+}
 
-export const LeftButton = styled.div`
+.left-button-co {
   width: 48%;
   cursor: pointer;
-`;
+}
 
-export const ViewBag = styled.button`
+.view-bag-co {
   background: #FFF;
   border: 1px solid #000;
   color: #000;
@@ -83,17 +81,18 @@ export const ViewBag = styled.button`
   width: 100%;
   transition: .4s ease-in-out;
   transform: scale(1);
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
+}
 
-export const RightButton = styled.div`
+.view-bag-co:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.right-button-co {
   width: 48%;
-`;
+}
 
-export const CheckOut = styled.button`
+.check-out-co {
   background: #52d67a;
   border: 1px solid #52d67a;
   color: #FFF;
@@ -104,8 +103,9 @@ export const CheckOut = styled.button`
   width: 100%;
   transition: .4s ease-in-out;
   transform: scale(1);
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
+}
+
+.check-out-co:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}

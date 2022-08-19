@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Bold, Buttons, CheckOut, Container, EmptyCart, ItemQuantity, LeftButton, Price, RightButton, Total, TotalPrice, ViewBag, Wrapper } from './CartOverlay.styled';
 import { Link } from 'react-router-dom';
 import Cart from '../Cart/Cart.component';
+import './CartOverlay.css';
 
 export class CartOverlay extends Component {
   componentDidMount() {
@@ -25,14 +25,14 @@ export class CartOverlay extends Component {
       completedProcess,
     } = this.props;
     return (
-      <Container>
-        <Wrapper>
-          <ItemQuantity>
-            <Bold>My Bag, </Bold>
+      <div className="container-co">
+        <div className="wrapper-co">
+          <h2 className="item-quantity-co">
+            <strong className="bold-co">My Bag, </strong>
             {totalQuantity} {totalQuantity > 1 ? "items" : "item"}
-          </ItemQuantity>
+          </h2>
           {cartItems.length < 1 ? (
-            <EmptyCart>Your cart is Empty</EmptyCart>
+            <div className="empty-cart-co">Your cart is Empty</div>
           ) : null}
           {cartItems.map((item, i) => (
             <Cart
@@ -43,24 +43,24 @@ export class CartOverlay extends Component {
               currency={currency}
             />
           ))}
-          <TotalPrice>
-            <Total>Total</Total>
-            <Price>
+          <div className="total-price-co">
+            <p className="total-co">Total</p>
+            <p className="price-co">
               {currency} {totalPrice}
-            </Price>
-          </TotalPrice>
-          <Buttons>
-            <LeftButton>
+            </p>
+          </div>
+          <div className="buttons-co">
+            <div className="left-button-co">
               <Link to="/cart">
-                <ViewBag>VIEW BAG</ViewBag>
+                <button className="view-bag-co">VIEW BAG</button>
               </Link>
-            </LeftButton>
-            <RightButton>
-              <CheckOut onClick={() => completedProcess()}>CHECK OUT</CheckOut>
-            </RightButton>
-          </Buttons>
-        </Wrapper>
-      </Container>
+            </div>
+            <div className="right-button-co">
+              <button className="check-out-co" onClick={() => completedProcess()}>CHECK OUT</button>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

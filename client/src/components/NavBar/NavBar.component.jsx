@@ -3,26 +3,12 @@ import icon from "../../assets/images/a-logo.png";
 import arrowDown from "../../assets/images/arrow_down.png";
 import arrowUp from "../../assets/images/arrow_up.png";
 import cart from "../../assets/images/Empty Cart.png";
-import {
-  Container,
-  Header,
-  Wrapper,
-  Brand,
-  Navigation,
-  List,
-  Item,
-  Controls,
-  Icon,
-  CardCounter,
-  OverLay,
-  Currency,
-  OverLaySwitcher,
-} from "./NavBar.styled";
 import { categoriesQuery, currenciesQuery } from "../../GraphQL/queries";
 import { CartOverlay } from "../CartOverlay/CartOverlay.component";
 import { client } from "../..";
 import { Link } from "react-router-dom";
 import CurrencySwitcher from "../CurrencySwitcher/CurrencySwitcher";
+import styled from "styled-components";
 import './NavBar.css';
 
 export class NavBar extends Component {
@@ -72,15 +58,15 @@ export class NavBar extends Component {
       completedProcess,
     } = this.props;
     return (
-      <Container>
-        <Header>
-          <Wrapper>
-            <Brand src={icon} alt="logo_icon"></Brand>
-          </Wrapper>
-          <Navigation>
+      <div className="container-nb">
+        <header className="header-nb">
+          <div className="wrapper-nb">
+            <img className="brand-nb" src={icon} alt="logo_icon"></img>
+          </div>
+          <nav className="navigation-nb">
             {categories.map((categorie) => (
               <List key={categorie.name}>
-                <Item>
+                <li className="item-nb">
                   <Link
                     onClick={() => choseCategory(categorie.name)}
                     to="/"
@@ -95,26 +81,28 @@ export class NavBar extends Component {
                   >
                     {categorie.name}
                   </Link>
-                </Item>
+                </li>
               </List>
             ))}
-          </Navigation>
-          <Controls>
-            <Wrapper flex>
-              <Currency>{currency}</Currency>
+          </nav>
+          <div className="controls-nb">
+            <div className="controls-wrapper-nb">
+              <h3 className="currency-nb">{currency}</h3>
               {currencySwitcher ? (
                 <CurrencySwitcher
                   currencies={currencies}
                   choseCurrency={choseCurrency}
                 />
               ) : null}
-              <Icon
+              <img
+                className="icon-nb"
                 onClick={handleCurrencies}
                 src={currencySwitcher ? arrowUp : arrowDown}
                 alt="dollar_icon"
               />
-              <Wrapper>
-                <Icon
+              <div className="wrapper-nb">
+                <img
+                  className="icon-nb"
                   onClick={() => this.handleClick()}
                   src={cart}
                   alt="cart_icon"
@@ -131,11 +119,11 @@ export class NavBar extends Component {
                     completedProcess={completedProcess}
                   />
                 ) : null}
-                <CardCounter>{totalQuantity}</CardCounter>
-              </Wrapper>
-            </Wrapper>
-          </Controls>
-        </Header>
+                <div className="card-counter-nb">{totalQuantity}</div>
+              </div>
+            </div>
+          </div>
+        </header>
         <OverLay
           onClick={() => this.handleClick()}
           value={displayCart ? "block" : "none"}
@@ -144,9 +132,34 @@ export class NavBar extends Component {
           onClick={() => handleCurrencies()}
           value={currencySwitcher ? "block" : "none"}
         />
-      </Container>
+      </div>
     );
   }
 }
+
+const List = styled.ul`
+  color: ${props => props.active ? '#52d67a' : '#1D1F22'};
+  padding-inline-start: 0;
+`;
+
+const OverLay = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  background: rgba(57,55,72,.22);
+  display: ${props => props.value};
+`;
+
+const OverLaySwitcher = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  display: ${props => props.value};
+  z-index: 10;
+`;
 
 export default NavBar;
