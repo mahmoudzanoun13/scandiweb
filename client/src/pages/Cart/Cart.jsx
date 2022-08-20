@@ -92,7 +92,7 @@ export class Cart extends Component {
                         +
                       </Button>
                       <p className="items">{product.quantity}</p>
-                      <Button onClick={() => decrementQuantity(product.id)}>
+                      <Button onClick={() => decrementQuantity(product.id, product.selectedAttributes)}>
                         -
                       </Button>
                     </div>

@@ -97,10 +97,10 @@ export class App extends Component {
     })
   }
 
-  decrementQuantity = (id) => {
+  decrementQuantity = (id, selectedAttributes) => {
     this.setState((prevState) => {
       let updatedCartItems = prevState.cartItems.map((product) => {
-        if (product.id === id) {
+        if (product.id === id && JSON.stringify(product.selectedAttributes) === JSON.stringify(selectedAttributes)) {
           return {
             ...product,
             quantity: product.quantity - 1,

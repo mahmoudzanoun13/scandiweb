@@ -55,7 +55,7 @@ export class Cart extends Component {
           <div className="center-c-c">
             <Button onClick={() => incrementQuantity(id, selectedAttributes)}>+</Button>
             <p className="items-c-c">{quantity}</p>
-            <Button onClick={() => decrementQuantity(id)}>-</Button>
+            <Button onClick={() => decrementQuantity(id, selectedAttributes)}>-</Button>
           </div>
           <div className="right-c-c">
             <div className="wrapper-c-c">
