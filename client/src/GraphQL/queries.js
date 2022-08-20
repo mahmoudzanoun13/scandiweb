@@ -11,7 +11,6 @@ export const productsQuery = gql` query categories( $title: String!)  {
       gallery
       inStock
       attributes {
-        id
         name
         type
         items {
