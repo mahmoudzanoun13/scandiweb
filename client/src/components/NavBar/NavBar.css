@@ -114,3 +114,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.overlay-nb {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  background: rgba(57,55,72,.22);
+}
+
+.overlay-switcher-nb {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  z-index: 10;
+}

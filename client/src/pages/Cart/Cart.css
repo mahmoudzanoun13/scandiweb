@@ -13,13 +13,13 @@
   line-height: 40px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #1D1F22;
+  color: #1d1f22;
 }
 
 .horizontal-line {
   width: 100%;
   height: 1px;
-  background: #E5E5E5;
+  background: #e5e5e5;
   margin: auto;
   margin-top: 50px;
 }
@@ -38,7 +38,7 @@
   font-size: 30px;
   line-height: 27px;
   font-weight: 600;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-top: 50px;
 }
 
@@ -46,7 +46,7 @@
   font-size: 30px;
   line-height: 27px;
   font-weight: 400;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-top: 20px;
 }
 
@@ -54,13 +54,47 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 18px;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-top: 20px;
 }
 
 .colors {
   display: flex;
   margin-top: 20px;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  transition: 0.4s ease-in-out;
+  transform: scale(1);
+  outline: 1px solid #1d1f22;
+  cursor: default;
+}
+
+.selectedColor {
+  outline: 3px solid #5ece7b !important;
+  border: 1px solid #fff;
+}
+
+.capacity {
+  min-width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  margin-top: 10px;
+  transition: 0.4s ease-in-out;
+  transform: scale(1);
+  outline: 1px solid #1d1f22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.selected {
+  background-color: #2b2b2b !important;
+  color: #fff !important;
 }
 
 .right {
@@ -73,6 +107,23 @@
 .controls {
   display: flex;
   flex-direction: column;
+}
+
+.button {
+  width: 20px;
+  height: 20px;
+  transition: 0.4s ease-in-out;
+  transform: scale(1);
+  border: 1px solid #2b2b2b;
+  text-align: center;
+  line-height: 16px;
+  margin: 20px;
+  background: #fff;
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .items {
@@ -89,8 +140,8 @@
 .tax {
   font-size: 24px;
   line-height: 28px;
-  font-weight: 400;  
-  color: #1D1F22;
+  font-weight: 400;
+  color: #1d1f22;
   padding-right: 10px;
   margin-top: 17px;
 }
@@ -98,8 +149,8 @@
 .quantity {
   font-size: 24px;
   line-height: 28px;
-  font-weight: 400;  
-  color: #1D1F22;
+  font-weight: 400;
+  color: #1d1f22;
   padding-right: 10px;
   margin-top: 17px;
 }
@@ -107,8 +158,8 @@
 .total {
   font-size: 24px;
   line-height: 28px;
-  font-weight: 500;  
-  color: #1D1F22;
+  font-weight: 500;
+  color: #1d1f22;
   padding-right: 10px;
   margin-top: 17px;
 }
@@ -120,10 +171,10 @@
   padding: 16px 32px;
   width: 279px;
   height: 43px;
-  background: #5ECE7B;
+  background: #5ece7b;
   border: none;
   margin: 20px 0 50px 0;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
   transform: scale(1);
 }
 
@@ -137,5 +188,5 @@
   line-height: 120%;
   font-weight: 600;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #ffffff;
 }

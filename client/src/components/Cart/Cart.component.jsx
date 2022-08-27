@@ -1,5 +1,4 @@
 import { Component } from "react";
-import styled from "styled-components";
 import './Cart.css'
 
 export class Cart extends Component {
@@ -29,20 +28,20 @@ export class Cart extends Component {
               ) : null;
             })}
             {attributes?.map((attribute) => (
-              <div className="container-c-c" key={attribute.id}>
+              <div className="container-c-c" key={attribute.name}>
                 <p className="section-title-c-c">{attribute.name}:</p>
                 {attribute.items?.map((item, i) => (
                   <div className="container-c-c" key={i} style={{ display: "inline-block" }}>
-                    {attribute.id === "Color" ? (
+                    {attribute.name === "Color" ? (
                       <div className="colors-c-c">
-                        <Color
-                          className={`${selectedAttributes[attribute.id] === item.value ? 'selectedColor' : null}`}
-                          value={item.value}
+                        <div
+                          className={`color-c-c ${selectedAttributes[attribute.name] === item.value ? 'selectedColor-c-c' : null}`}
+                          style={{background: item.value}}
                         />
                       </div>
                     ) : (
                       <div
-                        className={`capacity-c-c ${selectedAttributes[attribute.id] === item.value ? 'selected' : null}`}
+                        className={`capacity-c-c ${selectedAttributes[attribute.name] === item.value ? 'selected-c-c' : null}`}
                       >
                         {item.value}
                       </div>
@@ -53,9 +52,9 @@ export class Cart extends Component {
             ))}
           </div>
           <div className="center-c-c">
-            <Button onClick={() => incrementQuantity(id, selectedAttributes)}>+</Button>
+            <button onClick={() => incrementQuantity(id, selectedAttributes)} className="button-c-c">+</button>
             <p className="items-c-c">{quantity}</p>
-            <Button onClick={() => decrementQuantity(id, selectedAttributes)}>-</Button>
+            <button onClick={() => decrementQuantity(id, selectedAttributes)} className="button-c-c">-</button>
           </div>
           <div className="right-c-c">
             <div className="wrapper-c-c">
@@ -67,31 +66,5 @@ export class Cart extends Component {
     );
   }
 }
-
-const Color = styled.div`
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-  background: ${props => props.value ? props.value : null};
-  outline: 1px solid #1D1F22;
-  &:hover {
-    cursor: default;
-  }
-`;
-
-const Button = styled.p`
-  width: 20px;
-  height: 20px;
-  background: ${props => props.value ? props.value : null};
-  transition: .4s ease-in-out;
-  transform: scale(1);
-  border: 1px solid #2B2B2B;
-  text-align: center;
-  line-height: 16px;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
 
 export default Cart;

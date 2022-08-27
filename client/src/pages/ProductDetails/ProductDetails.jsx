@@ -3,7 +3,6 @@ import withParams from "../../withParams/withParams";
 import { detailsProductQuery } from "../../GraphQL/queries";
 import { client } from "../../index";
 import parse from "html-react-parser";
-import styled from "styled-components";
 import './ProductDetails.css';
 
 export class ProductDetails extends Component {
@@ -73,12 +72,12 @@ export class ProductDetails extends Component {
                   <div key={i} style={{ display: "inline-block" }}>
                     {attribute.id === "Color" ? (
                       <div className="colors-pd">
-                        <Color
+                        <div
                           onClick={() =>
                             this.getAttributes(attribute.id, item.value)
                           }
-                          className={`${selectedAttributes[attribute.id] === item.value ? 'selectedColor' : null}`}
-                          value={item.value}
+                          className={`color-pd ${selectedAttributes[attribute.id] === item.value ? 'selectedColor-pd' : null}`}
+                          style={{background: item.value}}
                         />
                       </div>
                     ) : (
@@ -86,7 +85,7 @@ export class ProductDetails extends Component {
                         onClick={() =>
                           this.getAttributes(attribute.id, item.value)
                         }
-                        className={`capacity-pd ${selectedAttributes[attribute.id] === item.value ? 'selected' : null}`}
+                        className={`capacity-pd ${selectedAttributes[attribute.id] === item.value ? 'selected-pd' : null}`}
                       >
                         {item.value}
                       </div>
@@ -121,19 +120,5 @@ export class ProductDetails extends Component {
     );
   }
 }
-
-const Color = styled.div`
-  width: 32px;
-  height: 32px;
-  margin-right: 10px;
-  background: ${props => props.value ? props.value : null};
-  transition: .4s ease-in-out;
-  transform: scale(1);
-  outline: 1px solid #1D1F22;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
 
 export default withParams(ProductDetails);

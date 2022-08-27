@@ -42,7 +42,7 @@ export class App extends Component {
   handleAddToCart = (product, selectedAttributes, lengthOfAttributes) => {
     let initialAttributes = {};
     const attributes = product.attributes.map((attribute) => attribute.items);
-    const getAttributesId = product.attributes.map((attribute) => attribute.id);
+    const getAttributesId = product.attributes.map((attribute) => attribute.name);
     attributes.map((item, i) => initialAttributes[getAttributesId[i]] = item[0].value);
     let isPresent = this.state.cartItems.findIndex(item => 
       item.id === product.id && JSON.stringify(item.selectedAttributes) === JSON.stringify(selectedAttributes)) !== -1;

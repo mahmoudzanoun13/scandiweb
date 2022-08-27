@@ -8,7 +8,6 @@ import { CartOverlay } from "../CartOverlay/CartOverlay.component";
 import { client } from "../..";
 import { Link } from "react-router-dom";
 import CurrencySwitcher from "../CurrencySwitcher/CurrencySwitcher";
-import styled from "styled-components";
 import './NavBar.css';
 
 export class NavBar extends Component {
@@ -65,14 +64,14 @@ export class NavBar extends Component {
           </div>
           <nav className="navigation-nb">
             {categories.map((categorie) => (
-              <List key={categorie.name}>
+              <ul key={categorie.name}>
                 <li className="item-nb">
                   <Link
                     onClick={() => choseCategory(categorie.name)}
                     to="/"
                     style={{
                       textDecoration: "none",
-                      color: "#1D1F22",
+                      color: categorie.name === chosenCategory ? "#52d67a" : "#1D1F22",
                       textTransform: "uppercase",
                     }}
                     className={`${
@@ -82,7 +81,7 @@ export class NavBar extends Component {
                     {categorie.name}
                   </Link>
                 </li>
-              </List>
+              </ul>
             ))}
           </nav>
           <div className="controls-nb">
@@ -124,42 +123,19 @@ export class NavBar extends Component {
             </div>
           </div>
         </header>
-        <OverLay
+        <div
           onClick={() => this.handleClick()}
-          value={displayCart ? "block" : "none"}
+          className="overlay-nb"
+          style={{display: displayCart ? "block" : "none"}}
         />
-        <OverLaySwitcher
+        <div
           onClick={() => handleCurrencies()}
-          value={currencySwitcher ? "block" : "none"}
+          className="overlay-switcher-nb"
+          style={{display: currencySwitcher ? "block" : "none"}}
         />
       </div>
     );
   }
 }
-
-const List = styled.ul`
-  color: ${props => props.active ? '#52d67a' : '#1D1F22'};
-  padding-inline-start: 0;
-`;
-
-const OverLay = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 80px;
-  left: 0px;
-  background: rgba(57,55,72,.22);
-  display: ${props => props.value};
-`;
-
-const OverLaySwitcher = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 80px;
-  left: 0px;
-  display: ${props => props.value};
-  z-index: 10;
-`;
 
 export default NavBar;

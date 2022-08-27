@@ -84,14 +84,14 @@
   font-weight: 600;
   font-size: 30px;
   line-height: 27px;
-  color: #1D1F22;
+  color: #1d1f22;
 }
 
 .category-pd {
   font-weight: 400;
   font-size: 30px;
   line-height: 27px;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-top: 20px;
 }
 
@@ -99,7 +99,7 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 18px;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-top: 20px;
 }
 
@@ -107,7 +107,21 @@
   display: flex;
 }
 
-.selectedColor {
+.color-pd {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  transition: 0.4s ease-in-out;
+  transform: scale(1);
+  outline: 1px solid #1d1f22;
+}
+
+.color-pd:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.selectedColor-pd {
   outline: 3px solid #5ece7b !important;
   border: 1px solid #fff;
 }
@@ -116,11 +130,11 @@
   min-width: 32px;
   height: 32px;
   margin-right: 10px;
-  background: #FFF;
-  color: #2B2B2B;
-  transition: .4s ease-in-out;
+  background: #fff;
+  color: #2b2b2b;
+  transition: 0.4s ease-in-out;
   transform: scale(1);
-  outline: 1px solid #1D1F22;
+  outline: 1px solid #1d1f22;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +146,7 @@
   transform: scale(1.1);
 }
 
-.selected {
+.selected-pd {
   background-color: #2b2b2b !important;
   color: #fff !important;
 }
@@ -141,23 +155,23 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 18px;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-top: 20px;
 }
 
 .add-to-cart-pd {
   width: 292px;
-  height: 52px;  
-  background: #5ECE7B;
+  height: 52px;
+  background: #5ece7b;
   padding: 16px 32px;
-  color: #FFF;
+  color: #fff;
   display: grid;
   place-items: center;
   font-weight: 600;
   font-size: 16px;
   line-height: 120%;
   margin: 20px 0;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
   transform: scale(1);
 }
 

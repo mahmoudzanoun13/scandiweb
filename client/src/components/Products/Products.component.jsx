@@ -4,7 +4,6 @@ import ProductDetails from "../../pages/ProductDetails/ProductDetails";
 import cart from '../../assets/images/Empty Cart.png';
 import { client } from "../..";
 import { productsQuery } from "../../GraphQL/queries";
-import styled from "styled-components";
 import './Products.css';
 
 export class Products extends Component {
@@ -36,7 +35,7 @@ export class Products extends Component {
     return (
       <div className="container-p">
         {products.map((product) => (
-          <ProductCardWrapper key={product.id}>
+          <div key={product.id} className="cart-wrapper-p">
             <Link to={`/details/${product.id}`}>
               <div onClick={() => <ProductDetails id={product.id} />}>
                 <div className="wrapper-p">
@@ -57,51 +56,16 @@ export class Products extends Component {
             </Link>
             {
               product.inStock ?
-                <EmptyCart onClick={() => handleAddToCart(product)}>
+                <div onClick={() => handleAddToCart(product)} className="cart-icon-p">
                   <img className="cart-p" src={cart} alt="empty_cart" />
-                </EmptyCart>
+                </div>
               : <div className="out-of-stock-p">OUT OF STOCK</div>
             }
-          </ProductCardWrapper>
+          </div>
         ))}
       </div>
     );
   }
 }
-
-const EmptyCart = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #52d67a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 20px;
-  bottom: 85px;
-  opacity: 0;
-  transition: .4s ease-in-out;
-  transform: scale(1);
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-const ProductCardWrapper = styled.div`
-  width: 315px;
-  height: 365px;
-  padding: 10px;
-  position: relative;
-  transition: .4s ease-in-out;
-  &:hover {
-    background: #FFF;
-    cursor: pointer;
-    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
-  }
-  &:hover ${EmptyCart} {
-    opacity: 1;
-  }
-`;
 
 export default Products;

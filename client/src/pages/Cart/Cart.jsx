@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Carousel } from "../../components/Carousel/Carousel";
-import styled from "styled-components";
 import './Cart.css';
 
 export class Cart extends Component {
@@ -48,8 +47,8 @@ export class Cart extends Component {
         <div className="wrapper">
           <h1 className="headline">cart</h1>
           <div className="horizontal-line" />
-          {cartItems.map((product) => (
-            <div className="container" key={product.id}>
+          {cartItems.map((product, i) => (
+            <div className="container" key={i}>
               <div className="product">
                 <div className="left">
                   <h1 className="title">{product.name}</h1>
@@ -63,22 +62,22 @@ export class Cart extends Component {
                     ) : null;
                   })}
                   {product.attributes?.map((attribute) => (
-                    <div className="container" key={attribute.id}>
+                    <div className="container" key={attribute.name}>
                       {attribute.items?.map((item, i) => (
                         <div className="container" key={i} style={{ display: "inline-block" }}>
-                          {attribute.id === "Color" ? (
+                          {attribute.name === "Color" ? (
                             <div className="colors">
-                              <Color
-                                className={`${product.selectedAttributes[attribute.id] === item.value ? 'selectedColor' : null}`}
-                                value={item.value}
+                              <div
+                                className={`color ${product.selectedAttributes[attribute.name] === item.value ? 'selectedColor' : null}`}
+                                style={{background: item.value}}
                               />
                             </div>
                           ) : (
-                            <Capacity
-                              className={`${product.selectedAttributes[attribute.id] === item.value ? 'selected' : null}`}
+                            <div
+                              className={`capacity ${product.selectedAttributes[attribute.name] === item.value ? 'selected' : null}`}
                             >
                               {item.value}
-                            </Capacity>
+                            </div>
                           )}
                         </div>
                       ))}
@@ -88,13 +87,13 @@ export class Cart extends Component {
                 <div className="right">
                   <div>
                     <div className="controls">
-                      <Button onClick={() => incrementQuantity(product.id, product.selectedAttributes)}>
+                      <button onClick={() => incrementQuantity(product.id, product.selectedAttributes)} className="button">
                         +
-                      </Button>
+                      </button>
                       <p className="items">{product.quantity}</p>
-                      <Button onClick={() => decrementQuantity(product.id, product.selectedAttributes)}>
+                      <button onClick={() => decrementQuantity(product.id, product.selectedAttributes)} className="button">
                         -
-                      </Button>
+                      </button>
                     </div>
                   </div>
                   <Carousel images={product.gallery} />
@@ -127,53 +126,5 @@ export class Cart extends Component {
     );
   }
 }
-
-const Color = styled.div`
-  width: 32px;
-  height: 32px;
-  margin-right: 10px;
-  background: ${props => props.value ? props.value : null};
-  transition: .4s ease-in-out;
-  transform: scale(1);
-  outline: 1px solid #1D1F22;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
-
-const Capacity = styled.div`
-  min-width: 32px;
-  height: 32px;
-  margin-right: 10px;
-  margin-top: 10px;
-  background: ${props => props.active ? '#2B2B2B' : '#FFF'};
-  transition: .4s ease-in-out;
-  transform: scale(1);
-  outline: 1px solid #1D1F22;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
-
-const Button = styled.p`
-  width: 20px;
-  height: 20px;
-  background: ${props => props.value ? props.value : null};
-  transition: .4s ease-in-out;
-  transform: scale(1);
-  border: 1px solid #2B2B2B;
-  text-align: center;
-  line-height: 16px;
-  margin: 20px;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-`;
 
 export default Cart;
