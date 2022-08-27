@@ -8,7 +8,7 @@ import Cart from "../pages/Cart/Cart";
 
 export class App extends Component {
   state = {
-    chosenCategory: 'all',
+    chosenCategory: '',
     cartItems: [],
     totalQuantity: 0,
     currency: '$',
